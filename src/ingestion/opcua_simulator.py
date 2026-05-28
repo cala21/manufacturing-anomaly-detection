@@ -8,7 +8,6 @@ import random
 import math
 from datetime import datetime
 from asyncua import Server
-from asyncua import ua
 
 async def run_simulator(endpoint: str = "opc.tcp://0.0.0.0:4840/manufacturing/"):
     server = Server()
@@ -27,7 +26,7 @@ async def run_simulator(endpoint: str = "opc.tcp://0.0.0.0:4840/manufacturing/")
     temperature = await line.add_variable(idx, "Temperature_C", 25.0)
     pressure = await line.add_variable(idx, "Pressure_bar", 4.0)
     cycle_count = await line.add_variable(idx, "CycleCount", 0)
-    fault_code = await line.add_variable(idx, "FaultCode", 0)
+    await line.add_variable(idx, "FaultCode", 0)
 
     await vibration.set_writable()
     await temperature.set_writable()
