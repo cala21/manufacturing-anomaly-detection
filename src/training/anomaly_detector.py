@@ -6,9 +6,6 @@ import pandas as pd
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report
-import json
-import os
-
 class ManufacturingAnomalyDetector:
     """Two-stage anomaly detection: fast statistical check + deep model."""
 
