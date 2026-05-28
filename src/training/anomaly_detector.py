@@ -1,11 +1,9 @@
 """Anomaly detection for manufacturing: Isolation Forest + Autoencoder."""
-import mlflow
-import mlflow.sklearn
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import IsolationForest
-from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report
+from sklearn.preprocessing import StandardScaler
 class ManufacturingAnomalyDetector:
     """Two-stage anomaly detection: fast statistical check + deep model."""
 
@@ -39,6 +37,9 @@ class ManufacturingAnomalyDetector:
 
 
 def train_and_log(data_path: str, experiment_name: str = "manufacturing-anomaly"):
+    import mlflow
+    import mlflow.sklearn
+
     df = pd.read_parquet(data_path)
     feature_cols = [c for c in df.columns if c not in ["timestamp", "label"]]
     X = df[feature_cols].values
